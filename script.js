@@ -13,12 +13,10 @@ var specChara =["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", ".", "?"]
 var choices;
 var fPassword=[];
 
-
-
+// variable for generate password button
 var generateBtn = document.querySelector("#generate");
-  // Add event listener to generate button
-// generateBtn.addEventListener("click", generatePassword);
 
+// function to collect use data and compile into array(s) for a randomized selection
 function generatePassword(){
     passLength = prompt("How long would you like your password?")
 
@@ -27,7 +25,7 @@ function generatePassword(){
     } else if(passLength <8 || passLength > 128) {
         passLength = alert("You must choose a number between 8 and 128");
     }
-
+// criteria prompts
    else{
         addUpCase = confirm("Would you like to include uppercase letter?");
         addLowCase = confirm("Would you like to include lowercase letters?");
@@ -80,10 +78,12 @@ function generatePassword(){
     else if (addSpecChara) {
         choices = specChara;
     };
+    // randomization function for information
 for (var i = 0; i < passLength; i++) {
     var choicesChosen = choices[Math.floor(Math.random() * choices.length)];
     fPassword.push(choicesChosen);
     }
+    // creates string from above array, no commas from join
     fPassword = fPassword.join("");
     console.log(fPassword);
     return fPassword;
@@ -95,7 +95,7 @@ function writePassword() {
     var passwordText = document.querySelector("#password");
         passwordText.value = password;
     };
-// runs function above
+// runs function above only on click 
 generateBtn.addEventListener("click", writePassword);
 
 
